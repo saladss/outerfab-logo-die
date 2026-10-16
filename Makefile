@@ -94,6 +94,10 @@ vga: clone-pdk ## Harden the VGA screensaver macro (needed before the top-level 
 	cd vga_screensaver && librelane --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --scl ${SCL} --run-tag latest --overwrite config.yaml
 .PHONY: vga
 
+wallpaper: ## Tile houndstooth onto free Metal5 of the routed chip (run after librelane, before precheck)
+	python3 scripts/wallpaper.py final/gds/chip_top.gds final/gds/chip_top_wallpaper.gds
+.PHONY: wallpaper
+
 logo: ## Regenerate the outerfab logo macro from the SVG
 	$(MAKE) -C ip/outerfab_logo logo
 .PHONY: logo

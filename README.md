@@ -16,8 +16,9 @@ GF180MCU shuttle (1x0.5 slot, 3.93 x 2.53 mm).
 
 Pad map is documented in `src/chip_core.sv`.
 
-Build order: `make logo` (optional, regenerates the logo GDS) -> `make vga` -> `make librelane`,
-then run the [precheck](https://github.com/wafer-space/gf180mcu-precheck) with `--slot 1x0p5`.
+Build order: `make logo` (optional, regenerates the logo GDS) -> `make vga` -> `make librelane`
+-> `make wallpaper` (houndstooth on the free Metal5, 160 um repeat, clear borders around the art)
+-> run the [precheck](https://github.com/wafer-space/gf180mcu-precheck) on `final/gds/chip_top_wallpaper.gds` with `--slot 1x0p5`.
 
 ---
 
