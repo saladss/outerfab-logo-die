@@ -11,6 +11,6 @@ giovanni:
 
 stuart:
 	python3 script/make_portrait.py photo/stuart.png gds/portrait_stuart.gds --cellname portrait_stuart --flip \
-		--ellipse 350 505 365 385 --erase 130 0 275 150 --erase 320 0 410 118 --gamma 0.85 --contrast 1.4 --white 0.8 \
+		--ellipse 350 505 365 385 --erase 130 0 275 150 --erase 320 0 410 118 --gamma 1.0 --contrast 1.3 --white 0.7 \
 		--height 540 --pixel 1.5 --bitmap bitmap/stuart.png \
 		--lef lef/portrait_stuart.lef --lib lib/portrait_stuart.lib --verilog vh/portrait_stuart.v
