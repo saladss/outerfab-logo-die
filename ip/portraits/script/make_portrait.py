@@ -38,12 +38,12 @@ def cutout(src, ellipse, blur=4, flip=False, erase=()):
     return im.crop(im.getbbox())
 
 
-def halftone(im, height_px, invert=False, gamma=1.0, contrast=1.0):
+def halftone(im, height_px, invert=False, gamma=1.0, contrast=1.0, white=1.0):
     bg = Image.new("RGBA", im.size, (0, 0, 0, 255))
     bg.paste(im, (0, 0), im)
     g = ImageOps.autocontrast(bg.convert("L"), cutoff=1)
-    if gamma != 1.0 or contrast != 1.0:
-        lut = [min(255, max(0, round(255 * (((v / 255) ** gamma - 0.5) * contrast + 0.5)))) for v in range(256)]
+    if gamma != 1.0 or contrast != 1.0 or white != 1.0:
+        lut = [min(255, max(0, round(255 * white * (((v / 255) ** gamma - 0.5) * contrast + 0.5)))) for v in range(256)]
         g = g.point(lut)
     if invert:
         g = ImageOps.invert(g)
@@ -129,6 +129,7 @@ def main():
     ap.add_argument("--invert", action="store_true", help="metal = dark instead of metal = bright")
     ap.add_argument("--gamma", type=float, default=1.0, help="<1 brightens mid-tones")
     ap.add_argument("--contrast", type=float, default=1.0, help=">1 stretches around mid-grey")
+    ap.add_argument("--white", type=float, default=1.0, help="scale the white point (<1 keeps texture in highlights)")
     ap.add_argument("--flip", action="store_true", help="mirror horizontally (ellipse is given in flipped coords)")
     ap.add_argument("--erase", type=float, nargs=4, action="append", metavar=("X0", "Y0", "X1", "Y1"), default=[],
                     help="rectangle(s) to blank out, in (flipped) photo pixels; repeatable")
@@ -139,7 +140,7 @@ def main():
     a = ap.parse_args()
 
     head = cutout(a.photo, a.ellipse, flip=a.flip, erase=a.erase)
-    bits = halftone(head, round(a.height / a.pixel), a.invert, a.gamma, a.contrast)
+    bits = halftone(head, round(a.height / a.pixel), a.invert, a.gamma, a.contrast, a.white)
     if a.bitmap:
         bits.save(a.bitmap)
     W, H, n, cov = to_gds(bits, a.out, a.cellname, a.pixel, a.gap, a.layer, a.boundary)
