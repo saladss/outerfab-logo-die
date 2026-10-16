@@ -6,18 +6,18 @@ MACRO portrait_stuart
   CLASS BLOCK ;
   FOREIGN portrait_stuart ;
   ORIGIN 0.000 0.000 ;
-  SIZE 412.500 BY 540.000 ;
+  SIZE 408.000 BY 540.000 ;
   OBS
       LAYER Metal1 ;
-        RECT 0.0 0.0 412.500 540.000 ;
+        RECT 0.0 0.0 408.000 540.000 ;
       LAYER Metal2 ;
-        RECT 0.0 0.0 412.500 540.000 ;
+        RECT 0.0 0.0 408.000 540.000 ;
       LAYER Metal3 ;
-        RECT 0.0 0.0 412.500 540.000 ;
+        RECT 0.0 0.0 408.000 540.000 ;
       LAYER Metal4 ;
-        RECT 0.0 0.0 412.500 540.000 ;
+        RECT 0.0 0.0 408.000 540.000 ;
       LAYER Metal5 ;
-        RECT 0.0 0.0 412.500 540.000 ;
+        RECT 0.0 0.0 408.000 540.000 ;
   END
 END portrait_stuart
 END LIBRARY
