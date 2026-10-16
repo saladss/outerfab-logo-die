@@ -5,8 +5,8 @@ all: giovanni stuart
 .PHONY: all giovanni stuart
 
 giovanni:
-	python3 script/make_portrait.py photo/giovanni.png gds/portrait_giovanni.gds --cellname portrait_giovanni \
-		--ellipse 288 296 240 262 --height 540 --pixel 1.5 --bitmap bitmap/giovanni.png \
+	python3 script/make_portrait.py photo/giovanni.png gds/portrait_giovanni.gds --cellname portrait_giovanni --flip \
+		--ellipse 238 296 240 262 --height 540 --pixel 1.5 --bitmap bitmap/giovanni.png \
 		--lef lef/portrait_giovanni.lef --lib lib/portrait_giovanni.lib --verilog vh/portrait_giovanni.v
 
 stuart:
