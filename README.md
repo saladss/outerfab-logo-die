@@ -1,3 +1,23 @@
+# outerfab logo die
+
+Promotional ASIC for [outerfab](https://github.com/geonzee/outerfab) on the wafer.space
+GF180MCU shuttle (1x0.5 slot, 3.93 x 2.53 mm).
+
+- **Centre:** the stacked outerfab logo, 1.9 mm wide, drawn as a *chirped diffraction grating*
+  on Metal5 — 1 um lines whose pitch sweeps from 1.46 um (top) to 2.0 um (bottom), so the
+  logo shows a colour gradient under directional light. Pitch range taken from Tholin's
+  palette test structures on wafer.space Run 1. Generator: `ip/outerfab_logo/`.
+- **Right column:** a hardened VGA screensaver macro (`vga_screensaver/`) that bounces the
+  outerfab mark around a 640x480 display via a Tiny VGA Pmod.
+- **Left column:** glue logic.
+
+Pad map is documented in `src/chip_core.sv`.
+
+Build order: `make logo` (optional, regenerates the logo GDS) -> `make vga` -> `make librelane`,
+then run the [precheck](https://github.com/wafer-space/gf180mcu-precheck) with `--slot 1x0p5`.
+
+---
+
 # gf180mcu Project Template
 
 Project template for wafer.space MPW runs using the gf180mcu PDK.

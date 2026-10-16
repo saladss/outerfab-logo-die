@@ -1,0 +1,23 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO outerfab_logo
+  CLASS BLOCK ;
+  FOREIGN outerfab_logo ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 1900.000 BY 1094.500 ;
+  OBS
+      LAYER Metal1 ;
+        RECT 0.0 0.0 1900.000 1094.500 ;
+      LAYER Metal2 ;
+        RECT 0.0 0.0 1900.000 1094.500 ;
+      LAYER Metal3 ;
+        RECT 0.0 0.0 1900.000 1094.500 ;
+      LAYER Metal4 ;
+        RECT 0.0 0.0 1900.000 1094.500 ;
+      LAYER Metal5 ;
+        RECT 0.0 0.0 1900.000 1094.500 ;
+  END
+END outerfab_logo
+END LIBRARY

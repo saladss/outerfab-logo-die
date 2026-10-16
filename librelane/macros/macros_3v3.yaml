@@ -78,32 +78,42 @@ MACROS:
         location: [26, "expr::$DIE_AREA[3] - 169.25"]
         orientation: N
 
-  # 3.3V SRAM
-  gf180mcu_ocd_ip_sram__sram512x8m8wm1:
+  # outerfab logo: chirped Metal5 grating, no ports. Centred on the 1x0.5 die.
+  outerfab_logo:
     gds:
-      - pdk_dir::libs.ref/gf180mcu_ocd_ip_sram/gds/gf180mcu_ocd_ip_sram__sram512x8m8wm1.gds
+      - dir::../ip/outerfab_logo/gds/outerfab_logo.gds
     lef:
-      - pdk_dir::libs.ref/gf180mcu_ocd_ip_sram/lef/gf180mcu_ocd_ip_sram__sram512x8m8wm1.lef
+      - dir::../ip/outerfab_logo/lef/outerfab_logo.lef
     vh:
-      - pdk_dir::libs.ref/gf180mcu_ocd_ip_sram/verilog/gf180mcu_ocd_ip_sram__sram512x8m8wm1__blackbox_pp.v
+      - dir::../ip/outerfab_logo/vh/outerfab_logo.v
     lib:
-      "*_tt_025C_3v30":
-        - pdk_dir::libs.ref/gf180mcu_ocd_ip_sram/lib/gf180mcu_ocd_ip_sram__sram512x8m8wm1__tt_025C_3v30.lib
-      "*_ff_n40C_3v60":
-        - pdk_dir::libs.ref/gf180mcu_ocd_ip_sram/lib/gf180mcu_ocd_ip_sram__sram512x8m8wm1__ff_n40C_3v60.lib
-      "*_ss_125C_3v00":
-        - pdk_dir::libs.ref/gf180mcu_ocd_ip_sram/lib/gf180mcu_ocd_ip_sram__sram512x8m8wm1__ss_125C_3v00.lib
+      "*":
+        - dir::../ip/outerfab_logo/lib/outerfab_logo.lib
     instances:
-      # Make sure to specify the SRAMs in pdn_cfg.tcl
-      i_chip_core.sram_0:
-        location: [490, 500]
+      outerfab_logo:
+        location: ["expr::($DIE_AREA[2] - 1900) / 2", "expr::($DIE_AREA[3] - 1094.5) / 2"]
         orientation: N
-      i_chip_core.sram_1:
-        location: [970, 500]
-        orientation: E
 
-# This is an alternative method compared to
-# specifying the power connections in the RTL
-PDN_MACRO_CONNECTIONS:
-- "i_chip_core.sram_0 VDD VSS VDD VSS"
-- "i_chip_core.sram_1 VDD VSS VDD VSS"
+  # VGA screensaver, hardened separately: `make vga`
+  wrapped_vga:
+    gds:
+      - dir::../vga_screensaver/runs/latest/final/gds/wrapped_vga.gds
+    lef:
+      - dir::../vga_screensaver/runs/latest/final/lef/wrapped_vga.lef
+    pnl:
+      - dir::../vga_screensaver/runs/latest/final/pnl/wrapped_vga.pnl.v
+    nl:
+      - dir::../vga_screensaver/runs/latest/final/nl/wrapped_vga.nl.v
+    spef:
+      min_*: dir::../vga_screensaver/runs/latest/final/spef/min/wrapped_vga.min.spef
+      nom_*: dir::../vga_screensaver/runs/latest/final/spef/nom/wrapped_vga.nom.spef
+      max_*: dir::../vga_screensaver/runs/latest/final/spef/max/wrapped_vga.max.spef
+    lib:
+      "*_tt_025C_5v00": dir::../vga_screensaver/runs/latest/final/lib/nom_tt_025C_5v00/wrapped_vga__nom_tt_025C_5v00.lib
+      "*_ss_125C_4v50": dir::../vga_screensaver/runs/latest/final/lib/nom_ss_125C_4v50/wrapped_vga__nom_ss_125C_4v50.lib
+      "*_ff_n40C_5v50": dir::../vga_screensaver/runs/latest/final/lib/nom_ff_n40C_5v50/wrapped_vga__nom_ff_n40C_5v50.lib
+    instances:
+      # right-hand column, vertically centred in the core; room above/below for more art
+      i_chip_core.vga:
+        location: ["expr::$CORE_AREA[2] - 510", "expr::($DIE_AREA[3] - 500) / 2"]
+        orientation: N

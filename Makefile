@@ -44,7 +44,7 @@ else
 endif
 
 AVAILABLE_SLOTS = 1x1 0p5x1 1x0p5 0p5x0p5
-DEFAULT_SLOT = 1x1
+DEFAULT_SLOT = 1x0p5
 
 # Slot can be any of AVAILABLE_SLOTS
 SLOT ?= $(DEFAULT_SLOT)
@@ -89,6 +89,14 @@ defines:
 	$(file >>src/generated_defines.svh,`define ${SLOT_DEFINE})
 	$(file >>src/generated_defines.svh,`define ${SRAM_DEFINE})
 .PHONY: defines
+
+vga: clone-pdk ## Harden the VGA screensaver macro (needed before the top-level flow)
+	cd vga_screensaver && librelane --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --scl ${SCL} --run-tag latest --overwrite config.yaml
+.PHONY: vga
+
+logo: ## Regenerate the outerfab logo macro from the SVG
+	$(MAKE) -C ip/outerfab_logo logo
+.PHONY: logo
 
 librelane: clone-pdk defines ## Run LibreLane flow (synthesis, PnR, verification)
 	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(MAKEFILE_DIR)/final
