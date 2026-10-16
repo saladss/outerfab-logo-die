@@ -4,8 +4,10 @@ Promotional ASIC for [outerfab](https://github.com/geonzee/outerfab) on the wafe
 GF180MCU shuttle (1x0.5 slot, 3.93 x 2.53 mm).
 
 - **Centre:** the stacked outerfab logo, 1.9 mm wide, drawn as a *chirped diffraction grating*
-  on Metal5 — 1 um lines whose pitch sweeps from 1.46 um (top) to 2.0 um (bottom), so the
-  logo shows a colour gradient under directional light. Pitch range taken from Tholin's
+  on Metal5 — 1 um lines whose pitch sweeps from 1.46 um to 2.0 um, so the logo shows a
+  colour gradient under directional light. The wordmark's lines are horizontal (gradient
+  top -> bottom); the mark's lines run at -45° so its gradient runs diagonally from the
+  ring up to the square. Pitch range taken from Tholin's
   palette test structures on wafer.space Run 1. Generator: `ip/outerfab_logo/`.
 - **Right column:** a hardened VGA screensaver macro (`vga_screensaver/`) that bounces the
   outerfab mark around a 640x480 display via a Tiny VGA Pmod.
