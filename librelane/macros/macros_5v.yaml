@@ -108,7 +108,7 @@ MACROS:
         - dir::../ip/portraits/lib/portrait_stuart.lib
     instances:
       portrait_stuart:
-        location: ["expr::($DIE_AREA[2] + 1900) / 2 + ($CORE_AREA[2] - ($DIE_AREA[2] + 1900) / 2 - 478.5) / 2",
+        location: ["expr::($DIE_AREA[2] + 1900) / 2 + ($CORE_AREA[2] - ($DIE_AREA[2] + 1900) / 2 - 438.0) / 2",
                    "expr::($DIE_AREA[3] - 500) / 2 + 500 + 10 + ($CORE_AREA[3] - (($DIE_AREA[3] - 500) / 2 + 500 + 10) - 540) / 2"]
         orientation: N
 
