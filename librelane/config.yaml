@@ -61,6 +61,8 @@ IGNORE_DISCONNECTED_MODULES:
 - gf180mcu_ws_ip__logo
 - gf180mcu_ws_ip__marker
 - outerfab_logo
+- portrait_stuart
+- portrait_giovanni
 
 # Clock
 CLOCK_PORT: clk_PAD

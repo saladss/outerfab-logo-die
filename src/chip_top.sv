@@ -273,6 +273,10 @@ module chip_top #(
     // outerfab logo: chirped Metal5 diffraction grating, centred on the die
     (* keep *) outerfab_logo outerfab_logo ();
 
+    // founder portraits (Metal5 halftones), above and below the VGA macro
+    (* keep *) portrait_stuart portrait_stuart ();
+    (* keep *) portrait_giovanni portrait_giovanni ();
+
 endmodule
 
 `default_nettype wire

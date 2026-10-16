@@ -10,7 +10,8 @@ GF180MCU shuttle (1x0.5 slot, 3.93 x 2.53 mm).
   ring up to the square. Pitch range taken from Tholin's
   palette test structures on wafer.space Run 1. Generator: `ip/outerfab_logo/`.
 - **Right column:** a hardened VGA screensaver macro (`vga_screensaver/`) that bounces the
-  outerfab mark around a 640x480 display via a Tiny VGA Pmod.
+  outerfab mark around a 640x480 display via a Tiny VGA Pmod, with Metal5 halftone portraits
+  of the founders above and below it (`ip/portraits/`).
 - **Left column:** glue logic.
 
 Pad map is documented in `src/chip_core.sv`.

@@ -94,6 +94,40 @@ MACROS:
         location: ["expr::($DIE_AREA[2] - 1900) / 2", "expr::($DIE_AREA[3] - 1094.5) / 2"]
         orientation: N
 
+  # Founder portraits, centred in the right-hand column above/below the VGA macro.
+  # Column: from the logo's right edge ((DIE_AREA[2]+1900)/2) to CORE_AREA[2]; VGA at y=(DIE_AREA[3]-500)/2.
+  portrait_stuart:
+    gds:
+      - dir::../ip/portraits/gds/portrait_stuart.gds
+    lef:
+      - dir::../ip/portraits/lef/portrait_stuart.lef
+    vh:
+      - dir::../ip/portraits/vh/portrait_stuart.v
+    lib:
+      "*":
+        - dir::../ip/portraits/lib/portrait_stuart.lib
+    instances:
+      portrait_stuart:
+        location: ["expr::($DIE_AREA[2] + 1900) / 2 + ($CORE_AREA[2] - ($DIE_AREA[2] + 1900) / 2 - 478.5) / 2",
+                   "expr::($DIE_AREA[3] - 500) / 2 + 500 + 10 + ($CORE_AREA[3] - (($DIE_AREA[3] - 500) / 2 + 500 + 10) - 540) / 2"]
+        orientation: N
+
+  portrait_giovanni:
+    gds:
+      - dir::../ip/portraits/gds/portrait_giovanni.gds
+    lef:
+      - dir::../ip/portraits/lef/portrait_giovanni.lef
+    vh:
+      - dir::../ip/portraits/vh/portrait_giovanni.v
+    lib:
+      "*":
+        - dir::../ip/portraits/lib/portrait_giovanni.lib
+    instances:
+      portrait_giovanni:
+        location: ["expr::($DIE_AREA[2] + 1900) / 2 + ($CORE_AREA[2] - ($DIE_AREA[2] + 1900) / 2 - 403.5) / 2",
+                   "expr::$CORE_AREA[1] + (($DIE_AREA[3] - 500) / 2 - 10 - $CORE_AREA[1] - 540) / 2"]
+        orientation: N
+
   # VGA screensaver, hardened separately: `make vga`
   wrapped_vga:
     gds:

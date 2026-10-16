@@ -1,0 +1,23 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO portrait_giovanni
+  CLASS BLOCK ;
+  FOREIGN portrait_giovanni ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 403.500 BY 540.000 ;
+  OBS
+      LAYER Metal1 ;
+        RECT 0.0 0.0 403.500 540.000 ;
+      LAYER Metal2 ;
+        RECT 0.0 0.0 403.500 540.000 ;
+      LAYER Metal3 ;
+        RECT 0.0 0.0 403.500 540.000 ;
+      LAYER Metal4 ;
+        RECT 0.0 0.0 403.500 540.000 ;
+      LAYER Metal5 ;
+        RECT 0.0 0.0 403.500 540.000 ;
+  END
+END portrait_giovanni
+END LIBRARY
